@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script type="text/javascript">
+
+            function buscarPuntosAlfabeticos(cadenaPrincipal) {
+                var puntoEncontrado = 0;
+                var encontrado = false;
+                var i = 0;
+                while (i < cadenaPrincipal.length && !encontrado) {
+                    if (cadenaPrincipal.charCodeAt(i) === 46) {
+                        puntoEncontrado++;
+                        if (puntoEncontrado > 1) {
+                            encontrado = true;
+                        }
+                    } else if (cadenaPrincipal.charCodeAt(i) < 48 || cadenaPrincipal.charCodeAt(i) > 57 && cadenaPrincipal.charCodeAt(i) !== 46) {
+                        encontrado = true;
+                    }
+                    i++;
+                }
+                return encontrado;
+            }
+
+            function esAlfabetico(numRedondeo) {
+                var i = 0;
+                var encontrado = false;
+                while (i < numRedondeo.length && !encontrado) {
+                    if (numRedondeo.charCodeAt(i) < 48 || numRedondeo.charCodeAt(i) > 57) {
+                        encontrado = true;
+                    }
+                    i++;
+                }
+                return encontrado;
+            }
+
+            function redondear(cadenaPrincipal, numRedondeo) {
+                //funcion redondeo
+                resultado = cadenaPrincipal.split("");
+                var i = 0;
+                while (i < resultado.length) {
+                    if (cadenaPrincipal.charCodeAt(i) === 46) {
+                        var numDecimales = cadenaPrincipal.length - i - 1;
+                        //rellenar ceros
+                        if (numDecimales < numRedondeo) { //comprobamos si los digitos que hay desde ahi hasta el final son menores al numero de redondeo dado
+                            var cerosToAdd = numRedondeo - (cadenaPrincipal.length - i - 1);
+                            for (var j = 0; j < cerosToAdd; j++) {
+                                resultado.push(0);
+                            }
+                        }
+                        //truncar desde el digito solicitado y aumentar el ultimo digito si es mayor o igual a 5
+                        else {
+                            for (var j = numRedondeo; j < numDecimales; j++) {
+                                resultado.pop();
+                            }
+                            if (resultado[resultado.length - 1] >= 5) {
+                                resultado[resultado.length - 1]++;
+                            }
+                        }
+                    }
+                    i++;
+                }
+                resultado = resultado.join("");
+                return resultado;
+            }
+
+
+        </script>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var cadenaPrincipal = prompt("Introducir numero entero o decimal");
+            while (buscarPuntosAlfabeticos(cadenaPrincipal)) {
+                cadenaPrincipal = prompt("Introducir numero entero o decimal con formato correcto");
+            }
+
+            var numRedondeo = prompt("Introducir numero al que redondear");
+            while (esAlfabetico(numRedondeo)) {
+                numRedondeo = prompt("Introducir numero al que redondear con formato correcto");
+            }
+            var redondeo = redondear(cadenaPrincipal, numRedondeo);
+            document.write("El resultado de redondear '" + cadenaPrincipal + "' a '" + numRedondeo + "' es '" + redondeo +"'");
+        </script>
+    </body>
+</html>

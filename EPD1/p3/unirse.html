@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>¿CÓMO UNIRME AL CLUB?</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <h1><a href="index.html" rel="home">Club de Lectura Forocochero</a></h1>  
+            <h4>Extraído de: <a href="https://www.forocoches.com/foro/showthread.php?t=1955146">Plataforma Oficial en Forocoches</a></h4>
+            <a href="index.html"><img width="250" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRizSHKgQDLn4KkaKFddyGf3vYLxsRNQDR2cdR7Qdpxc83BxgzlGA" alt="Club de Lectura Filosofía y Sociedad"></a>
+        </header>    
+        <nav>
+            <a href="unirse.html">¿CÓMO UNIRME AL CLUB?</a>
+            <a href="lecturas.html">LECTURAS</a>
+        </nav>
+        <main>
+            <div>
+                <p>Para ser miembro tendrás que seguir los siguientes pasos:</p>
+                <ol>
+                    <li>Leer las <a href="#normas">normas</a></li>
+                    <li>Pedir número en el <a href="https://www.forocoches.com/foro/showthread.php?t=5085426&highlight=lectura">hilo general</a>
+                    <li>Rellenar el <a href="#form">formulario de inscripción </a></li>
+                </ol>
+            </div>
+            <section id="normas">
+                <h2>NORMAS DEL CLUB</h2>
+                <ul>
+                    <li><h2>Derecho a voto: </h2>Para poder votar en cualquier 
+                        actividad de la plataforma (elegir lecturas, propuestas,
+                        encuestas...) hay que ser miembro del club y contar, como
+                        mínimo, con un libro oficial leído. Para que un libro 
+                        oficial se considere leído hay que completar su lectura 
+                        en el plazo de tiempo estipulado y rellenar posteriormente
+                        la ficha de lectura oficial.</li>
+                    <li><h2>Duración de la membresía: </h2>Una persona es miembro
+                        del club siempre y cuando respete las normas y participe
+                        en la plataforma de forma activa. Si tras el cierre de 
+                        dos volúmenes no ha posteado como mínimo un mensaje, 
+                        dejará de formar parte del club. Esto implica:
+                        <ol>
+                            <li>Perderá su número, que será reasignado a otro usuario.</li>
+                            <li>Perderá el total de libros oficiales leídos que hubiera acumulado hasta la fecha,
+                                con la pérdida de votos que ello implica.</li>
+                        </ol>
+                        Un usuario que haya formado parte de la plataforma y haya perdido su membresía
+                        puede volver a solicitar la pertenencia al club siguiendo el proceso del punto 
+                        0.1; eso sí, ni recuperará su número ni los votos que tuviera.
+                    </li>
+                    <li><h2>Spoilers sobre libros: </h2> Cualquier spoiler en 
+                        el hilo, por parte de miembros de la plataforma o por 
+                        gente ajena a ella, significará el reporte inmediato y 
+                        la expulsión. Siempre existe la posibilidad de comentar 
+                        por mp con otros miembros del club cualquier aspecto de 
+                        un libro que implique revelar parte de su trama, no utilizar
+                        nunca el hilo general para esto.
+                        Única excepción permitida de esta norma: se podrá 
+                        spoilear en el hilo general sobre lecturas oficiales cuyo
+                        plazo de lectura y plazo de postear ficha de lectura hayan
+                        finalizado. No obstante, para no estropear la lectura a 
+                        miembros de la plataforma o gente ajena, este tipo de 
+                        spoilers deberá realizarse de la siguiente manera:
+                        <ul>
+                            <li>El comentario deberá encerrarse entre las etiquetas [SPOILER][/SPOILER], escritas en rojo, negrita y tamaño 4.</li>
+                            <li>La letra del comentario deberá ser en color blanco o #f2f2f2.</li>
+                            <li>No citar nunca un comentario que contenga spoilers sin haber borrado antes el texto blanco, ya que se podría leer perfectamente sobre el fondo gris de la cita.</li>
+                        </ul>
+                    </li>
+                    <li><h2>Enlaces a descargas de libros: </h2> Queda totalmente prohibido postear en el hilo general enlaces a descargas de ebooks. No cumplir esta norma implica la expulsión de la plataforma y el reporte por parte del resto de miembros de la misma. Los enlaces a las lecturas oficiales y libres se facilitarán a través de medios ajenos a ForoCoches. NO HACEMOS ESTO POR GUSTO, ES PARA EVITAR HITLARIADAS Y MIERDAS VARIAS.</li>
+                </ul>
+            </section>
+
+            <section id="form">
+                <h2>FORMULARIO DE INSCRIPCIÓN</h2>
+
+                <form>
+                    Nombre de usuario en Forocoches:
+                    <input name="usuario" type="text" required>
+                    <br>
+                    Género favorito: 
+                    <input list="generos" name="generos" required>
+                    <datalist id="generos">
+                        <option value="Romance">
+                        <option value="Aventuras">
+                        <option value="Ciencia ficción">
+                        <option value="Misterio">
+                        <option value="Divulgación científica">
+                        <option value="Política">
+                    </datalist>
+                    <br>
+                    E-mail: 
+                    <input type="email" name="emailaddress" required>
+                    <br>                    
+                    <input type="submit">
+                </form>
+                <br>
+                ¿Qué interés tienes por la lectura? Dale una puntuación (min 0, máx 100):
+                <form oninput="x.value=parseInt(a.value)">0
+                    <input type="range" id="a" value="50">100
+                    =<output name="x" for="a"></output>
+                    <br>
+                    <input type="submit">
+                </form>
+            </section>
+
+            <section>
+                <h2>Lista de miembros del club</h2>
+                <ol>
+                    <li>Urreta (Creador) (I) 
+                    <li>White night (Colaborador habitual)(I)</li>
+                    <li>Legen-Dario (Colaborador habitual)(I)</li>
+                    <li>abuelao</li>
+                    <li>_Caesar_ (I) </li>
+                    <li>Reomano</li>
+                    <li>Roalguti</li>
+                    <li>Heldfield</li>
+                    <li>Rockber</li>
+                    <li>24racing</li>
+                    <li>Aqua_toffana</li>
+                    <li>eskizo</li>
+                    <li>Flipa</li>
+                    <li>squeletor (I)</li>
+                    <li>RokeHD (I)</li>
+                    <li>Thales11</li>
+                    <li>Socio23</li>
+                    <li>Bokoa</li>
+                    <li>MONI</li>
+                    <li>CocoMoyo</li>
+                    <li>melenas89</li>
+                </ol>
+                <h4>Mascota del club: </h4>
+                <video width="320" height="240" controls>
+                    <source src="https://ia800300.us.archive.org/21/items/EddyWuLittleCat021avi/_021_512kb.mp4" type="video/mp4">
+                </video>
+            </section>
+        </main>
+        <aside>
+            <h3>Publicidad</h3>
+            <a href="https://www.hawkersco.com/pages/forocoches">
+                <img src="https://i.imgur.com/3vSPMcr.jpg" alt="banner de publicidad" width="700">
+            </a>
+
+        </aside>
+        <footer>
+            <h4>Avisos legales</h4>
+            <a href="cookies.html">Política de cookies</a>
+            <h4>Otras plataformas en donde encontrarnos:</h4>
+            <a href="https://www.forocoches.com">Forocoches</a>
+        </footer>
+    </body>
+</html>

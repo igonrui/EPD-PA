@@ -1,0 +1,32 @@
+Grupo 7: Irene González Ruiz, Fernando Moreno Vidal, Iván Rodríguez Santos
+
+<header> Para indicar que esa sección es la cabecera de la página. Incluye el título y subtítulo de la página
+<nav> Enlaces a otras secciones de la web
+<main> contenido principal de la pagina
+<section> area de contenido principal de la página
+<article> sección particular dentro del area de contenido principal de la pagina
+<aside> información secundaria de la web(banners publicitarios)
+<footer> pie de pagina
+<audio> incorporar un archivo de audio en la web, colocado en la sección "Lecturas"
+<video> incorporar un archivo de vídeo en la web, colocado en la sección "¿Cómo unirme al club?"
+<details> para aumentar la información sobre la sinopsis del libro en la sección "Lecturas"
+<summary> empleado junto con la etiqueta <details>
+<dialog> para mostrar una etiqueta en la web a modo de advertencia en la sección "Lecturas", que anima al socio a leer el libro propuesto
+<figcaption> utilizado para mostrar un texto del tipo pie de foto en el index de la web
+<figure> empleado para decir que se coloca una imagen (la grupal del index de la web)
+<mark> para resaltar la palabra "locos de la lectura" en la pagina principal
+<meter> coloca una barra que muestra visualmente la puntuación del libro en el TOP 5 actual
+<progress> coloca una barra de progreso para mostrar el progreso en la web (aún está en construcción)
+<wbr> utilizado en la palabra "democráticamente" del index para forzar la palabra a que, ante cambios en la dimensión de la ventana del navegador, la palabra se corte específicamente quedando "democrática" y "mente"
+<output> para que el usuario, en el formulario, de una puntuación de su interés en la lectura
+<input> en el formulario, para poder recibir un valor (el nombre del usuario)
+<datalist> para mostrar una lista de opciones en el formulario, de las que el usuario elige una
+<time> para decir en qué fecha se hizo el último top 5 de lecturas
+
+
+Las etiquetas 
+<rp> 
+<rt>
+<ruby>
+<bdi> 
+No tiene sentido aplicarlas ya que están referidas a caracteres tipográficos no utilizados en el idioma español.

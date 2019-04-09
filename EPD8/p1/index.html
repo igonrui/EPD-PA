@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Comprueba tu edad</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+            //variable global que controla los errores que se han cometido al introducir las edades (edades que sobrepasen el limite)
+            alertSet = 0;
+            
+            function validar(e) {
+                var keynum;
+                if (window.event) // IE
+                    keynum = e.keyCode;
+
+                else if (e.which) // Netscape/Firefox/Opera
+                    keynum = e.which;
+                if (keynum == undefined || (keynum > 47 && keynum < 58) || keynum == 47)
+                    return true;
+                else
+                    return false;
+            }
+
+            function comprobar(campo, expr) {
+                if (!expr.test(campo.value))
+                    alert('El campo ' +
+                            campo.getAttribute('name') +
+                            ' no se ajusta al formato requerido de DD/MM/AAAA');
+            }
+
+            function comprobarEdad() {
+                var divEdad = document.getElementById("divedad");
+                if (divEdad === null) {
+                    var edadLabel = document.createElement('div');
+                    edadLabel.id = "divedad";
+                    edadLabel.textContent = "Tu edad es: ";
+                    document.body.appendChild(edadLabel);
+                    var edad = document.createElement('div');
+                    edad.id = "edad";
+                    document.body.appendChild(edad);
+                }
+
+                var fecha = document.getElementById("fechaNac").value;
+                var edad = calcularEdad(fecha);
+
+                document.getElementById("edad").textContent = edad;
+                //si la edad es menor a 18 o mayor a 40
+                if (edad < 18 || edad > 40) {
+                    document.getElementById('fechaNac').style.backgroundColor = 'red';
+                    document.getElementById('fechaNac').style.borderColor = 'red';
+                    var alert = document.createElement('div');
+                    alert.id = "alert";
+                    alert.textContent = "Eres menor de 18 o mayor de 40 años";
+                    alert.style.color = 'red';
+                    document.body.appendChild(alert);
+                    document.getElementById("checkButton").disabled = true; //se desactiva la opcion de poder enviar el formulario (se desactiva el boton)
+                    alertSet++; //aumentamos la variable de control
+                } else if (alertSet > 0) { //si el usuario corrigiese la edad (despues de haber introduca una que no cumpliera los parametros), entonces se mostraría su edad y se eliminarian las advertencias (color)
+                    document.getElementById('fechaNac').style.backgroundColor = null;
+                    document.getElementById('fechaNac').style.borderColor = null;
+                    var alert = document.getElementById('alert');
+                    document.body.removeChild(alert);
+                    document.getElementById("checkButton").disabled = false;
+                }
+                console.log(alertSet);
+            }
+
+            function calcularEdad(fecha) {
+                var hoy = new Date();
+                //var cumpleanos = new Date(fecha);
+                var cumpleanosArray = fecha.split("/");
+                var cumpleanos = new Date(cumpleanosArray[2], cumpleanosArray[1] - 1, cumpleanosArray[0]);
+                var edad = hoy.getFullYear() - cumpleanos.getFullYear(); //se resta el año actual con el año de la fecha de nacimiento
+                var m = hoy.getMonth() - cumpleanos.getMonth(); //se restan los meses de diferencia 
+
+                if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) { //si el mes actual es menor al mes de tu cumpleaños, entonces aún no has cumplido
+                    //o si el dia actual es mejor al día de tu cumpleaños, tampoco has cumplido aun
+                    edad--;                                                       //por lo que se re resta un año
+                }
+                return edad;
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>¿Tienes entre 18 y 40 años?</h1>
+        Introduce tu fecha de nacimiento: <br/>
+        <input type="text" id="fechaNac" name="fecha de nacimiento" onchange="comprobarEdad()" onkeypress='return validar(event)' onchange="comprobar(this, /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/)"/>
+        <input type="submit" id="checkButton" value="Comprobar" onkeypress="comprobarEdad()" />
+    </body>
+</html>

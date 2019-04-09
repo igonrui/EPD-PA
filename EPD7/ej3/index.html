@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script type="text/javascript">
+            function myFunction() {
+                //declaro el array global para poder acceder a él desde la funcion imprimeMultiplos
+                array = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
+                
+                var j = 1;
+                while (j<6){
+                    imprimeMultiplos(j);
+                    j++;
+                }
+            }
+            
+            function imprimeMultiplos(j){
+                var i= 0;
+                while (i < 9) {
+                    if (array[i] % j === 0) {
+                        document.write(array[i]);
+                    }
+                    i++;
+                }
+                document.write("<br>");
+            }
+
+        </script>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body onLoad="myFunction()">
+    </body>
+</html>

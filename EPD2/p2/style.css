@@ -1,0 +1,162 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04-oct-2018, 13:18:02
+    Author     : irene
+*/
+
+body{
+    background-color: rgb(217,206,178);
+    margin:0;
+    font-family: monospace;
+    font-size:120%;
+    text-align: justify;
+}
+
+#navContainer{
+    text-align: center;
+    background-color: rgb(217,206,178);
+    width: 100%;
+}
+
+.nav {
+    font-size:120%;
+    text-decoration: underline overline dotted;
+    padding: 1%;
+}
+
+a:hover, a:link, a:visited, a:active {
+    text-decoration: none;
+    font-size: 120%;
+    color: black;
+}
+
+#cabecera{
+    text-decoration: underline overline dotted;
+}
+
+
+section{
+    background-color: rgb(148,155,147);
+    padding: 2%;
+}
+
+
+.header{
+    background-color: rgb(148,140,117);
+    padding:2%;
+    font-size: 120%;
+    text-align: center; 
+}
+
+
+#publi{
+    background-color: rgb(148,140,117);
+    position: relative;
+    width:100%;
+}
+
+#construc{
+    position: absolute;
+    right:30%;
+    top: 40%;
+    background-color: rgb(148,140,117);
+    border-left:4px solid black;
+}
+
+
+#legal, #platforms{
+    text-align: center; 
+    padding:2%; 
+}
+
+#form{
+    background-color: rgb(148,140,117);
+    padding:2%;
+    font-size: 120%;
+    text-align: center;
+}
+
+#music{
+        padding: 2%;
+        text-align: center;
+
+}
+
+#miembros{
+    position: relative;
+    width:100%;
+}
+
+#mascota{
+    position: absolute;
+    right:30%;
+    top: 20%;
+}
+
+.aside{
+    background-color: rgb(148,140,117);
+        width:90%;
+}
+
+.img-40{
+    width:40%;
+}
+
+
+h1, h2{
+    font-family: monospace;
+
+}
+
+h2:after{
+    content:' ';
+    display:block;
+    border:2px solid black;
+}
+
+#top{
+    text-align: center;
+}
+
+
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+
+}
+th, td {
+    padding: 1%;
+}
+
+tr:nth-child(even){
+    background-color: rgb(196,191,179);
+}
+
+tr:nth-child(odd){
+    background-color: rgb(148,140,117);
+}
+
+.round{
+    border-radius: 50%;
+}
+
+.border-round{
+    border-radius: 3%;
+    width:20%;
+}
+
+.miniatura {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+}
+
+.miniatura:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}

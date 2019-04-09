@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <title>Lector de noticias</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Para que se muestre como un elemento clicable -->
+        <style type="text/css">
+            li:hover{
+                cursor: pointer;
+            }
+        </style>
+        <script type="text/javascript">
+            function cambiarNoticia(i) {
+                //ponemos la barra de progreso a 0 cada vez que se cambia una noticia
+                $("#progressbar").progressbar({
+                    value: 0
+                });
+
+                //si la i que se recibe es de tipo click, guardamos guardamos el id del elemento que se haya pulsado (esta funcion puede ser invocada al pulsar un elemento li)
+                if (i.type === "click") {
+                    i = $(this).attr('id');
+                }
+                //recoge la info que quiere mostrar
+                var newTitular = noticias[i][0];
+                var newContenido = noticias[i][1];
+
+                //reemplaza los elementos con animacion
+                $("#divNoticia").toggle("blind");
+                $("#noticiaTitular").text(newTitular);
+                $("#noticiaContenido").text(newContenido);
+                $("#divNoticia").toggle("blind");
+            }
+
+            $('li').click(function () {
+                var i = $(this).id;
+                cambiarNoticia(i);
+                //Reseteamos los intervalos creados
+                window.clearInterval(interval);
+                window.clearInterval(progress);
+                intervalo(i);
+            });
+
+            function intervalo(i) {
+                //setInterval ejecuta la funcion que se le pase como parametro, cada X tiempo que se ponga 
+                setInterval(function () {
+                    cambiarNoticia(i);
+
+                    //como el setInterval se ejecuta forever, será como un bucle donde habrá que ir aumentando la i
+                    //para evitar un index bound, ponemos que solo se incremente mientras i sea menor al tamaño de la matriz
+                    if (i < noticias.length - 1) {
+                        i++;
+                    } else {//en caso contrario reiniciamos el contador
+                        i = 0;
+                    }
+                }, timer);
+                
+                //creamos un intervalo que se ejecute tantas veces como progresbarTimer
+                setInterval(function () {
+                    //en cada vuelta en el intervalo, se incrementa el valor que tuviera progressbar
+                    var progress = $("#progressbar").progressbar("value");
+                    progress += progressbarTimer;
+                    //de modo que cada segundo se setea el valor de progressbar (incrementandose)
+                    $("#progressbar").progressbar({
+                        value: progress
+                    });
+                }, progressbarTimer);
+            }
+
+
+
+        </script>
+    </head>
+    <body>
+        <h1>Lector de noticias</h1>
+        <div id="divNoticia">
+            <h2 id="noticiaTitular"></h2>
+            <p id="noticiaContenido"></p>
+        </div>
+        <div id="progressbar"></div>
+        <ul id="listaNoticias"></ul>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //array que contiene las noticias (titular en primera fila, contenido de la noticia en la segunda)
+                noticias = [["Noticia 1", "Fake news"],
+                    ["Noticia 2", "Still fake news"],
+                    ["Noticia 3", "News are fake"],
+                    ["Noticia 4", "Random stuff"]];
+                timer = 10000;
+                progressbarTimer = timer / 100;
+
+
+                //inicializamos los elementos de la pagina
+                $("#noticiaTitular").text(noticias[0][0]);
+                $("#noticiaContenido").text(noticias[0][1]);
+
+                //creamos la lista de noticias
+                var listaNoticias = $("#listaNoticias");
+                for (var i = 0; i < noticias.length; i++) {
+                    $("<li>")
+                            .attr('id', i)
+                            .text(noticias[i][0])
+                            .appendTo(listaNoticias);
+                }
+                intervalo(1);
+                $(document).ready(function () {
+                    $("#progressbar").progressbar({
+                        max: timer
+                    });
+                });
+
+                //añadimos evento a la noticia, de forma que al cliclearla se llame al metodo cambiarNoticia
+                $("li").click(cambiarNoticia);
+            }
+            );
+        </script>
+    </body>
+</html>

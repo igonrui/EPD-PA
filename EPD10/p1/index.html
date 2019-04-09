@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.zoom.min.js"></script>
+        <title>Zoom</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+
+            $(document).ready(function () {
+                $('#img1').zoom({duration: 500, onZoomIn: zoomIn, onZoomOut: zoomOut});
+                $('#img2').zoom({on: 'grab', duration: 1000, onZoomIn: zoomIn, onZoomOut: zoomOut});
+                zoom1 = false;
+                zoom2 = false;
+                function zoomIn() {
+                    var id = $(this).parent().attr('id');
+                    if (id === "img1" && !zoom1) {
+                        $(this).parent().before("<p id='z1'><b>Estás observando la nebulosa de Orión</b></p>");
+                        zoom1 = true;
+                    } else if (id === "img2" && !zoom2) {
+                        $(this).parent().before("<p id='z2'><b>Estás observando una ciudad</b></p>");
+                        zoom2 = true;
+                    }
+                }
+
+                function zoomOut() {
+                    var id = $(this).parent().attr('id');
+                    if (id === "img1") {
+                       $('#z1').remove();
+                        zoom1 = false;
+                    } else if (id === "img2") {
+                        $('#z2').remove();
+                        zoom2 = false;
+                    }
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Im&aacute;genes con zoom</h1>
+        <p>Pasa el cursor por la imagen para ampliarla: </p>
+        <div id="img1">
+            <img src="img/Backyard_photo_of_the_Orion_Nebula.jpg" width="1000" height="500" alt="Nebulosa de Orion"/>
+        </div>
+        <p>Mant&eacute;n presionado el rat&oacute;n por la imagen para ampliarla</p>
+        <div id="img2">
+            <img src="img/buildings-city-cityscape-36361.jpg" width="1000" height="500" alt="Ciudad"/>
+        </div>
+    </body>
+</html>

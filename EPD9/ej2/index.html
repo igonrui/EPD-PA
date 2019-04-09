@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Captcha</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="jquery-ui.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var generado = false;
+
+                $("#captcha")
+                        .mouseenter(generaCaptcha)
+                        .mouseleave(escondeCaptcha);
+                $("#regenerar").click(regenera);
+                $("#comprobar").click(comprueba);
+
+                function generaCaptcha() {
+                    if (!generado) {
+                        //genera un numero aleatorio de 4 cifras
+                        num = Math.floor((Math.random() * 1000) + 1000);
+                        generado = true;
+                    }
+
+                    $("#captcha").fadeOut(function () {
+                        $(this)
+                                .text(num)
+                                .fadeIn();
+                    });
+                }
+
+                function escondeCaptcha() {
+                    $("#captcha").fadeOut(function () {
+                        $(this)
+                                .text("Pase el ratón por aquí para ver el código")
+                                .fadeIn();
+                    });
+                }
+
+                function regenera() {
+                    generado = false;
+                }
+
+                function comprueba() {
+                    if ($("#captchaText").val() == num) {
+                        $("#comprobacion").text("Correcto");
+                    } else {
+                        $("#comprobacion")
+                                .text("Incorrecto")
+                                .css("color", "red");
+                        $("#captchaText")
+                                .effect("shake")
+                                .css("background-color","red");
+                    }
+                }
+            });
+        </script>
+    </head>
+    <body>
+        Acceso a la web:
+        <div id="captcha">Pase el rat&oacuten por aqu&iacute para ver el c&oacutedigo<br/></div>
+        Introduzca el n&uacutemero generado: <input type="text" id="captchaText"> <input type="submit" value="Comprobar" id="comprobar">
+        <input type="button" value="Regenerar captcha" id="regenerar">
+        <div id="comprobacion"></div>
+    </body>
+</html>

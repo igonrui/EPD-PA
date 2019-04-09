@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Gestión de tareas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript">
+            tareas = [["Dormir", "Baja"], ["Terminar la EPD8 de PA", "Muy alta"]];
+
+            function crearTabla() {
+                ordenarPorPrioridad();
+                var tablaTemp = document.getElementById("tableTareas")
+                //si la tabla ya estaba creada, se borra
+                if (tablaTemp !== null) {
+                    document.body.removeChild(tablaTemp);
+                }
+                var tabla = document.createElement('table');
+                tabla.border = '1';
+                tabla.id = "tableTareas";
+                var tableBody = document.createElement('tbody');
+                tableBody.id = "tbody";
+                tabla.appendChild(tableBody);
+                //rellenamos la tabla con los datos de tareas
+                for (var i = 0; i < tareas.length; i++) {
+                    var tr = document.createElement('tr');
+                    tr.id = "tr" + i;
+                    tableBody.appendChild(tr);
+                    var td0 = document.createElement('td');
+                    td0.appendChild(document.createTextNode((i + 1) + "."));
+                    tr.appendChild(td0);
+                    var td1 = document.createElement('td');
+                    td1.appendChild(document.createTextNode(tareas[i][0]));
+                    tr.appendChild(td1);
+                    var td2 = document.createElement('td');
+                    td2.appendChild(document.createTextNode(tareas[i][1]));
+                    tr.appendChild(td2);
+                    var td3 = document.createElement('td');
+                    var img = document.createElement('i');
+                    img.className += "fa fa-trash";
+                    img.id = i;
+                    //agregamos un listener a la papelera, de modo que lace la funcion eliminarFila cuando sea clickeado
+                    img.addEventListener("click", eliminarFila);
+                    td3.appendChild(img);
+                    tr.appendChild(td3);
+                }
+                document.body.appendChild(tabla);
+            }
+
+            function eliminarFila() {
+                //eliminarFila es un metodo que sera invocado por el elemento papelera
+                var trash = this; //nos devuelve el elemento <i class="fa fa-trash" id="1"></i> (en caso de que pulsasemos el elemento id=1)
+                var i = trash.id; //nos quedamos solo con la id de este elemento
+                var elemento = document.getElementById("tr" + i);
+                if (elemento != null) {
+                    var bodyRef = document.getElementsByTagName("tbody").item(0);
+                    bodyRef.removeChild(elemento);
+                    //eliminamos la tarea del array
+                    tareas.splice(i, 1);
+                }
+
+                //si se han eliminado todos los elementos de la tabla
+                if (tareas.length === 0) {
+                    var table = document.getElementById('tableTareas');
+                    document.body.removeChild(table);
+                }
+            }
+
+            function agregar() {
+                var tarea = document.getElementById("tarea").value;
+                var prioridad = document.getElementById("prioridad").value;
+                tareas.push([tarea, prioridad]);
+                ordenarPorPrioridad();
+                crearTabla();
+            }
+
+            function ordenarPorPrioridad() {
+                tareas.sort(function (row1, row2) {
+                    var k1 = row1[1], k2 = row2[1];
+                    var priority1, priority2;
+                    switch (k1) {
+                        case "Muy alta":
+                            priority1 = 0;
+                            break;
+                        case "Alta":
+                            priority1 = 1;
+                            break;
+                        case "Media":
+                            priority1 = 2;
+                            break;
+                        case "Baja":
+                            priority1 = 3;
+                            break;
+                        case "Muy baja":
+                            priority1 = 4;
+                            break;
+                    }
+                    switch (k2) {
+                        case "Muy alta":
+                            priority2 = 0;
+                            break;
+                        case "Alta":
+                            priority2 = 1;
+                            break;
+                        case "Media":
+                            priority2 = 2;
+                            break;
+                        case "Baja":
+                            priority2 = 3;
+                            break;
+                        case "Muy baja":
+                            priority2 = 4;
+                            break;
+                    }
+                    var cmp;
+                    if (priority1 > priority2) {
+                        cmp = 1;
+                    } else if (priority1 < priority2) {
+                        cmp = -1;
+                    } else {
+                        cmp = 0;
+                    }
+                    return cmp;
+                });
+            }
+
+        </script>
+    </head>
+    <body>
+        Tarea<input type="text" name="tarea" value="" id="tarea"/>
+        Prioridad<select name="prioridad" id="prioridad">
+            <option>Muy alta</option>
+            <option>Alta</option>
+            <option>Media</option>
+            <option>Baja</option>
+            <option>Muy baja</option>
+        </select>
+        <input type="submit" value="Agregar" name="agregar" onclick="agregar()"/>
+        <br/>
+        Tareas pendientes
+        <br/>
+        <script type="text/javascript">
+            crearTabla();
+        </script>
+    </body>
+</html>

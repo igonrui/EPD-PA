@@ -1,0 +1,17 @@
+2;Roma;Londres;02:00
+2;Paris;Dublin;01:15
+2;Paris;Roma;01:30
+3;Roma;Dublin;02:00
+3;Paris;Dublin;01:15
+3;Paris;Roma;01:30
+4;Roma;Sevilla;02:00
+4;Paris;Roma;01:15
+4;Londres;Roma;01:30
+4;Roma;Barcelona;01:15
+4;Roma;Dublin;02:30
+1;Roma;Barcelona;01:00
+1;Barcelona;Roma;00:55
+3;Roma;Barcelona;01:15
+3;Barcelona;Roma;01:15
+5;Roma;Amsterdam;01:05
+5;Madrid;Amsterdam;02:05

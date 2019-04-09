@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lector de noticias</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Para que se muestre como un elemento clicable -->
+        <style type="text/css">
+            li:hover{
+                cursor: pointer;
+            }
+        </style>
+        <script type="text/javascript">
+            function cambiarNoticia() {
+                //guardamos el id del elemento que se haya pulsado (esta funcion sera invocada al pulsar un elemento li)
+                var noticia = this;
+                var i = noticia.id;
+                //recoge la info que quiere mostrar
+                var newTitular = document.createTextNode(noticias[i][0]);
+                var newContenido = document.createTextNode(noticias[i][1]);
+
+                //reemplaza los elementos
+                h2.replaceChild(newTitular, h2.firstChild);
+                p.replaceChild(newContenido, p.firstChild);
+                
+                //paramos el intervalo actual para se reinicie
+                window.clearInterval(interval);
+                intervalo(i);
+            }
+
+            function intervalo(i) {
+                //setInterval ejecuta la funcion que se le pase como parametro, cada X tiempo que se ponga 
+                interval = setInterval(function () {
+                    //recoge la info que quiere mostrar
+                    var newTitular = document.createTextNode(noticias[i][0]);
+                    var newContenido = document.createTextNode(noticias[i][1]);
+
+                    //reemplaza los elementos
+                    h2.replaceChild(newTitular, h2.firstChild);
+                    p.replaceChild(newContenido, p.firstChild);
+                    //como el setInterval se ejecuta forever, será como un bucle donde habrá que ir aumentando la i
+                    //para evitar un index bound, ponemos que solo se incremente mientras i sea menor al tamaño de la matriz
+                    if (i < noticias.length - 1) {
+                        i++;
+                    } else {//en caso contrario reiniciamos el contador
+                        i = 0;
+                    }
+                }, 10000);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Lector de noticias</h1>
+        <h2 id="noticiaTitular"></h2>
+        <p id="noticiaContenido"></p>
+        <ul id="listaNoticias"></ul>
+        <script type="text/javascript">
+            //array que contiene las noticias (titular en primera fila, contenido de la noticia en la segunda)
+            noticias = [["Noticia 1", "Fake news"],
+                ["Noticia 2", "Still fake news"],
+                ["Noticia 3", "News are fake"],
+                ["Noticia 4", "Random stuff"]];
+
+            //inicializamos los elementos de la pagina
+            h2 = document.getElementById("noticiaTitular");
+            var textoH2 = document.createTextNode(noticias[0][0]);
+            h2.appendChild(textoH2);
+            p = document.getElementById("noticiaContenido");
+            var textoP = document.createTextNode(noticias[0][1]);
+            p.appendChild(textoP);
+
+            //creamos la lista de noticias
+            var listNoticias = document.getElementById('listaNoticias');
+
+            for (var i = 0; i < noticias.length; i++) {
+                var li = document.createElement('li');
+                li.id = i;
+                var textoTitulo = document.createTextNode(noticias[i][0]);
+                li.appendChild(textoTitulo);
+                //añadimos listener para la noticia, de forma que al cliclearla se llame al metodo cambiarNoticia
+                li.addEventListener("click", cambiarNoticia);
+                listNoticias.appendChild(li);
+                intervalo(0);
+            }
+
+        </script>
+    </body>
+</html>

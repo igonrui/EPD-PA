@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script type="text/javascript">
+
+            function buscarPuntosAlfabeticos(temperatura) {
+                var puntoEncontrado = 0;
+                var encontrado = false;
+                var i = 0;
+                while (i < temperatura.length && !encontrado) {
+                    if (temperatura.charCodeAt(i) === 46) {
+                        puntoEncontrado++;
+                        if (puntoEncontrado > 1) {
+                            encontrado = true;
+                        }
+                    } else if (temperatura.charCodeAt(i) < 48 || temperatura.charCodeAt(i) > 57 && temperatura.charCodeAt(i) !== 46) {
+                        encontrado = true;
+                    }
+                    i++;
+                }
+                return encontrado;
+            }
+
+            function esAlfabetico(valoresAleatorios) {
+                var i = 0;
+                var encontrado = false;
+                while (i < valoresAleatorios.length && !encontrado) {
+                    if (valoresAleatorios.charCodeAt(i) < 48 || valoresAleatorios.charCodeAt(i) > 57) {
+                        encontrado = true;
+                    }
+                    i++;
+                }
+                return encontrado;
+            }
+
+            function temperaturasAleatorias(tempMin, tempMax, valoresAleatorios) {
+                var temperaturas = Array();
+                for (var i = 0; i < valoresAleatorios; i++) {
+                    randomTemp = (Math.random() * (tempMax - tempMin) + tempMin).toFixed(3);
+                    temperaturas.push(randomTemp);
+                }
+                return temperaturas;
+            }
+
+            function mostrarTabla(pacientes, temperaturas) {
+                elemento = document.createElement('div');
+                document.body.appendChild(elemento);
+
+                var table = document.createElement('TABLE');
+                table.border = '1';
+                document.body.appendChild(table);
+
+                var tableHead = document.createElement('THEAD');
+                table.appendChild(tableHead);
+
+                var tr = document.createElement('TR');
+                tableHead.appendChild(tr);
+
+                var columnas = Array("Pacientes", "Temperaturas");
+                for (var i = 0; i < 2; i++) {
+                    var th = document.createElement('TH');
+                    th.appendChild(document.createTextNode(columnas[i]));
+                    tr.appendChild(th);
+                }
+
+                var tableBody = document.createElement('TBODY');
+                table.appendChild(tableBody);
+
+                //cada paciente
+                for (var i = 0; i < pacientes.length; i++) {
+                    var tr = document.createElement('TR');
+                    tableBody.appendChild(tr);
+
+                    var td1 = document.createElement('TD');
+                    td1.appendChild(document.createTextNode(pacientes[i]));
+                    tr.appendChild(td1);
+
+                    //cada temperatura
+                    for (var j = 0; j < 1; j++) {
+                        var td2 = document.createElement('TD');
+                        td2.appendChild(document.createTextNode(temperaturas[i]));
+                        tr.appendChild(td2);
+                    }
+                }
+
+                elemento.appendChild(table);
+            }
+
+        </script>
+        <title>Temperaturas aleatorias de pacientes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script type="text/javascript">
+            var pacientes = Array("Irene", "Iván", "Fernando", "Carlos", "Daniel");
+            var tempMin = prompt("Introducir valor temperatura mínimo");
+            while (buscarPuntosAlfabeticos(tempMin)) {
+                tempMin = prompt("Introducir valor temperatura mínimo con formato correcto (p.ej.: 35.5");
+            }
+            var tempMax = prompt("Introducir valor temperatura máximo");
+            while (buscarPuntosAlfabeticos(tempMax)) {
+                tempMax = prompt("Introducir valor temperatura máximo con formato correcto (p.ej.: 39.5");
+            }
+            while (tempMin > tempMax) {
+                tempMax = prompt("El valor máximo debe ser superior al mínimo: ");
+                while (buscarPuntosAlfabeticos(tempMax)) {
+                    tempMax = prompt("Introducir valor temperatura máximo con formato correcto (p.ej.: 39.5");
+                }
+            }
+
+            var valoresAleatorios = prompt("Introducir valores aleatorios a generar");
+            while (esAlfabetico(valoresAleatorios)) {
+                valoresAleatorios = prompt("Introducir valores aleatorios a generar con formato correcto (p.ej.: 3");
+            }
+
+            var temperaturas = temperaturasAleatorias(parseFloat(tempMin), parseFloat(tempMax), parseFloat(valoresAleatorios));
+
+            mostrarTabla(pacientes, temperaturas);
+        </script>
+    </body>
+</html>

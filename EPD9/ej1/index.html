@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html class="client-nojs" lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>LaTeX/Introduction - Wikibooks, open books for an open world</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var configuracion_ventana = "menubar=1,resizable=1,width=350,height=350";
+                var newWindow = window.open("about:blank", "_blank", configuracion_ventana);
+                var strongLimit = 2;
+                var urlLimit = 1;
+                newWindow.document.write("N&uacutemero medio de palabras por p&aacuterrafo de la p&aacutegina: " + numeroMedioPalabras() + "<br><br>");
+                newWindow.document.write("Listado con los textos alternativos de las im&aacutegenes que contiene la p&aacutegina:<br>" + imagesAlt() + "<br>");
+                newWindow.document.write("Dos primeros p&aacuterrafos en negrita:<br>" + strongParrafo(strongLimit) + "<br>");
+                newWindow.document.write("URL del primer hiperenlace de la p&aacutegina:<br>" + linkURL(urlLimit));
+
+                function numeroMedioPalabras() {
+                    var sum = 0;
+                    var parrafos = $("p");
+                    for (var i = 0; i < parrafos.length; i++) {
+                        //Para cada parrafo, separamos las palabras y las contamos
+                        sum += parrafos[i].textContent.split(" ").length;
+                    }
+
+                    return sum / parrafos.length;
+                }
+
+                function imagesAlt() {
+                    var result = "";
+                    var images = $("img");
+                    for (var i = 0; i < images.length; i++) {
+                        //Para cada imagen, mostramos su texto alternativo
+                        result += "Imagen n&uacutemero " + i + ": " + images[i].alt + "<br>";
+                    }
+                    return result;
+                }
+
+                function strongParrafo(limit) {
+                    var result = "";
+                    var parrafos = $("p");
+                    for (var i = 0; i < limit; i++) {
+                        //Se ponen en negrita 2 parrafos (el limite)
+                        result += "<strong>" + parrafos[i].textContent + "</strong><br>";
+                    }
+                    return result;
+                }
+
+                function linkURL(limit) {
+                    var result = "";
+                    var url = $("a");
+                    for (var i = 0; i < limit; i++) {
+                        result += "URL n&uacutemero " + i + ": " + url[i].href + "<br>";
+                    }
+                    return result;
+                }
+            });
+        </script>
+    </head>
+    <body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-LaTeX_FAQ rootpage-LaTeX skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+        <div id="mw-head-base" class="noprint"></div>
+        <div id="content" class="mw-body" role="main">
+            <div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div><div class="mw-indicators mw-body-content">
+            </div>
+            <h1 id="firstHeading" class="firstHeading" lang="en">LaTeX/FAQ</h1>			<div id="bodyContent" class="mw-body-content">
+                <div id="siteSub" class="noprint">From Wikibooks, open books for an open world</div>				<div id="contentSub"><span class="subpages">&lt; <a href="/wiki/LaTeX" title="LaTeX">LaTeX</a></span></div>
+                <div id="jump-to-nav"></div>				<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+                <a class="mw-jump-link" href="#p-search">Jump to search</a>
+                <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><table class="wikitable collapsible noprint" style="background-color: #efe; float: right; clear: right; border: 1px solid #8b8; padding: 0.5em; font-size: small; text-align: left; width: 20%; margin: 0.5em;">
+
+                            <tbody><tr>
+                                    <th>
+                                        <div class="floatright"><a href="/wiki/File:LaTeX_logo.svg" class="image"><img alt="LaTeX logo.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/60px-LaTeX_logo.svg.png" width="60" height="25" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/90px-LaTeX_logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/120px-LaTeX_logo.svg.png 2x" data-file-width="1200" data-file-height="500" /></a></div>
+                                        <p><a href="/wiki/LaTeX" title="LaTeX">LaTeX</a>
+                                        </p>
+                                    </th></tr>
+                                <tr>
+                                    <td>Getting Started
+                                        <ol><li><a href="/wiki/LaTeX/Introduction" title="LaTeX/Introduction">Introduction</a></li>
+                                            <li><a href="/wiki/LaTeX/Installation" title="LaTeX/Installation">Installation</a></li>
+                                            <li><a href="/wiki/LaTeX/Installing_Extra_Packages" title="LaTeX/Installing Extra Packages">Installing Extra Packages</a></li>
+                                            <li><a href="/wiki/LaTeX/Basics" title="LaTeX/Basics">Basics</a></li>
+                                            <li><a href="/wiki/LaTeX/How_to_get_help" title="LaTeX/How to get help">How to get help</a></li></ol>
+                                        <p>Common Elements
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Document_Structure" title="LaTeX/Document Structure">Document Structure</a></li>
+                                            <li><a href="/wiki/LaTeX/Text_Formatting" title="LaTeX/Text Formatting">Text Formatting</a></li>
+                                            <li><a href="/wiki/LaTeX/Paragraph_Formatting" title="LaTeX/Paragraph Formatting">Paragraph Formatting</a></li>
+                                            <li><a href="/wiki/LaTeX/Colors" title="LaTeX/Colors">Colors</a></li>
+                                            <li><a href="/wiki/LaTeX/Fonts" title="LaTeX/Fonts">Fonts</a></li>
+                                            <li><a href="/wiki/LaTeX/List_Structures" title="LaTeX/List Structures">List Structures</a></li>
+                                            <li><a href="/wiki/LaTeX/Special_Characters" title="LaTeX/Special Characters">Special Characters</a></li>
+                                            <li><a href="/wiki/LaTeX/Internationalization" title="LaTeX/Internationalization">Internationalization</a></li>
+                                            <li><a href="/wiki/LaTeX/Rotations" title="LaTeX/Rotations">Rotations</a></li>
+                                            <li><a href="/wiki/LaTeX/Tables" title="LaTeX/Tables">Tables</a></li>
+                                            <li><a href="/wiki/LaTeX/Title_Creation" title="LaTeX/Title Creation">Title creation</a></li>
+                                            <li><a href="/wiki/LaTeX/Page_Layout" title="LaTeX/Page Layout">Page Layout</a></li>
+                                            <li><a href="/wiki/LaTeX/Customizing_Page_Headers_and_Footers" title="LaTeX/Customizing Page Headers and Footers">Customizing Page Headers and Footers‎</a></li>
+                                            <li><a href="/wiki/LaTeX/Importing_Graphics" title="LaTeX/Importing Graphics">Importing Graphics</a></li>
+                                            <li><a href="/wiki/LaTeX/Floats,_Figures_and_Captions" title="LaTeX/Floats, Figures and Captions">Floats, Figures and Captions</a></li>
+                                            <li><a href="/wiki/LaTeX/Footnotes_and_Margin_Notes" title="LaTeX/Footnotes and Margin Notes">Footnotes and Margin Notes</a></li>
+                                            <li><a href="/wiki/LaTeX/Hyperlinks" title="LaTeX/Hyperlinks">Hyperlinks</a></li>
+                                            <li><a href="/wiki/LaTeX/Labels_and_Cross-referencing" title="LaTeX/Labels and Cross-referencing">Labels and Cross-referencing</a></li>
+                                            <li><a href="/wiki/LaTeX/Initials" title="LaTeX/Initials">Initials</a></li></ol>
+                                        <p>Mechanics
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Errors_and_Warnings" title="LaTeX/Errors and Warnings">Errors and Warnings</a></li>
+                                            <li><a href="/wiki/LaTeX/Lengths" title="LaTeX/Lengths">Lengths</a></li>
+                                            <li><a href="/wiki/LaTeX/Counters" title="LaTeX/Counters">Counters</a></li>
+                                            <li><a href="/wiki/LaTeX/Boxes" title="LaTeX/Boxes">Boxes</a></li>
+                                            <li><a href="/wiki/LaTeX/Rules_and_Struts" title="LaTeX/Rules and Struts">Rules and Struts</a></li></ol>
+                                        <p>Technical Texts
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Mathematics" title="LaTeX/Mathematics">Mathematics</a></li>
+                                            <li><a href="/wiki/LaTeX/Advanced_Mathematics" title="LaTeX/Advanced Mathematics">Advanced Mathematics</a></li>
+                                            <li><a href="/wiki/LaTeX/Theorems" title="LaTeX/Theorems">Theorems</a></li>
+                                            <li><a href="/wiki/LaTeX/Chemical_Graphics" title="LaTeX/Chemical Graphics">Chemical Graphics</a></li>
+                                            <li><a href="/wiki/LaTeX/Algorithms" title="LaTeX/Algorithms">Algorithms</a></li>
+                                            <li><a href="/wiki/LaTeX/Source_Code_Listings" title="LaTeX/Source Code Listings">Source Code Listings</a></li>
+                                            <li><a href="/wiki/LaTeX/Linguistics" title="LaTeX/Linguistics">Linguistics</a></li></ol>
+                                        <p>Special Pages
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Indexing" title="LaTeX/Indexing">Indexing</a></li>
+                                            <li><a href="/wiki/LaTeX/Glossary" title="LaTeX/Glossary">Glossary</a></li>
+                                            <li><a href="/wiki/LaTeX/Bibliography_Management" title="LaTeX/Bibliography Management">Bibliography Management</a></li>
+                                            <li><a href="/wiki/LaTeX/More_Bibliographies" title="LaTeX/More Bibliographies">More Bibliographies</a></li></ol>
+                                        <p>Special Documents
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Scientific_Reports" title="LaTeX/Scientific Reports">Scientific Reports (Bachelor Report, Master Thesis, Dissertation)</a></li>
+                                            <li><a href="/wiki/LaTeX/Letters" title="LaTeX/Letters">Letters</a></li>
+                                            <li><a href="/wiki/LaTeX/Presentations" title="LaTeX/Presentations">Presentations</a></li>
+                                            <li><a href="/wiki/LaTeX/Teacher%27s_Corner" title="LaTeX/Teacher&#39;s Corner">Teacher's Corner</a></li>
+                                            <li><a href="/wiki/LaTeX/Curriculum_Vitae" title="LaTeX/Curriculum Vitae">Curriculum Vitae</a></li></ol>
+                                        <p>Creating Graphics
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Introducing_Procedural_Graphics" title="LaTeX/Introducing Procedural Graphics">Introducing Procedural Graphics</a></li>
+                                            <li><a href="/wiki/LaTeX/MetaPost" title="LaTeX/MetaPost">MetaPost</a></li>
+                                            <li><a href="/wiki/LaTeX/Picture" title="LaTeX/Picture">Picture</a></li>
+                                            <li><a href="/wiki/LaTeX/PGF/TikZ" title="LaTeX/PGF/TikZ">PGF/TikZ</a></li>
+                                            <li><a href="/wiki/LaTeX/PSTricks" title="LaTeX/PSTricks">PSTricks</a></li>
+                                            <li><a href="/wiki/LaTeX/Xy-pic" title="LaTeX/Xy-pic">Xy-pic</a></li>
+                                            <li><a href="/wiki/LaTeX/Creating_3D_graphics" title="LaTeX/Creating 3D graphics">Creating 3D graphics</a></li></ol>
+                                        <p>Programming
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Macros" title="LaTeX/Macros">Macros</a></li>
+                                            <li><a href="/wiki/LaTeX/Plain_TeX" title="LaTeX/Plain TeX">Plain TeX</a></li>
+                                            <li><a href="/wiki/LaTeX/Creating_Packages" title="LaTeX/Creating Packages">Creating Packages</a></li>
+                                            <li><a href="/wiki/LaTeX/Creating_Package_Documentation" title="LaTeX/Creating Package Documentation">Creating Package Documentation</a></li>
+                                            <li><a href="/wiki/LaTeX/Themes" title="LaTeX/Themes">Themes</a></li></ol>
+                                        <p>Miscellaneous
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Modular_Documents" title="LaTeX/Modular Documents">Modular Documents</a></li>
+                                            <li><a href="/wiki/LaTeX/Collaborative_Writing_of_LaTeX_Documents" title="LaTeX/Collaborative Writing of LaTeX Documents">Collaborative Writing of LaTeX Documents</a></li>
+                                            <li><a href="/wiki/LaTeX/Export_To_Other_Formats" title="LaTeX/Export To Other Formats">Export To Other Formats</a></li></ol>
+                                        <p>Help and Recommendations
+                                        </p>
+                                        <ol><li><a class="mw-selflink selflink">FAQ</a></li>
+                                            <li><a href="/wiki/LaTeX/Tips_and_Tricks" title="LaTeX/Tips and Tricks">Tips and Tricks</a></li></ol>
+                                        <p>Appendices
+                                        </p>
+                                        <ol><li><a href="/wiki/LaTeX/Authors" title="LaTeX/Authors">Authors</a></li>
+                                            <li><a href="/wiki/LaTeX/Links" title="LaTeX/Links">Links</a></li>
+                                            <li><a href="/wiki/LaTeX/Package_Reference" title="LaTeX/Package Reference">Package Reference</a></li>
+                                            <li><a href="/wiki/LaTeX/Sample_LaTeX_documents" title="LaTeX/Sample LaTeX documents">Sample LaTeX documents</a></li>
+                                            <li><a href="/wiki/LaTeX/Index" title="LaTeX/Index">Index</a></li>
+                                            <li><a href="/wiki/LaTeX/Command_Glossary" title="LaTeX/Command Glossary">Command Glossary</a></li></ol>
+                                    </td></tr>
+                                <tr>
+                                    <td>
+                                        <p><small><a class="external text" href="//en.wikibooks.org/w/index.php?title=Template:LaTeX/Top&amp;action=edit">edit this box</a> • <a class="external text" href="//en.wikibooks.org/w/index.php?title=Template:LaTeX/Contents&amp;action=edit">edit the TOC</a></small>
+                                        </p>
+                                    </td></tr></tbody></table>
+                        <div id="toc" class="toc"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox"/><div class="toctitle" lang="en" dir="ltr"><h2>Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+                            <ul>
+                                <li class="toclevel-1 tocsection-1"><a href="#Margins_are_too_wide"><span class="tocnumber">1</span> <span class="toctext">Margins are too wide</span></a></li>
+                                <li class="toclevel-1 tocsection-2"><a href="#Avoid_excessive_double_line_breaks_in_source_code"><span class="tocnumber">2</span> <span class="toctext">Avoid excessive double line breaks in source code</span></a></li>
+                                <li class="toclevel-1 tocsection-3"><a href="#Simplified_special_character_input"><span class="tocnumber">3</span> <span class="toctext">Simplified special character input</span></a></li>
+                                <li class="toclevel-1 tocsection-4"><a href="#Writing_the_euro_symbol_directly"><span class="tocnumber">4</span> <span class="toctext">Writing the euro symbol directly</span></a></li>
+                                <li class="toclevel-1 tocsection-5"><a href="#LaTeX_paragraph_headings_have_title_and_content_on_the_same_line"><span class="tocnumber">5</span> <span class="toctext">LaTeX paragraph headings have title and content on the same line</span></a></li>
+                                <li class="toclevel-1 tocsection-6"><a href="#Fonts_are_ugly/jagged/bitmaps_or_PDF_search_fails_or_Copy/paste_from_PDF_is_messy"><span class="tocnumber">6</span> <span class="toctext"><i>Fonts are ugly/jagged/bitmaps</i> or <i>PDF search fails</i> or <i>Copy/paste from PDF is messy</i></span></a></li>
+                                <li class="toclevel-1 tocsection-7"><a href="#Manual_formatting:_use_of_line_breaks_and_page_breaks"><span class="tocnumber">7</span> <span class="toctext">Manual formatting: use of line breaks and page breaks</span></a></li>
+                                <li class="toclevel-1 tocsection-8"><a href="#Always_finish_commands_with_{}"><span class="tocnumber">8</span> <span class="toctext">Always finish commands with <i>{}</i></span></a></li>
+                                <li class="toclevel-1 tocsection-9"><a href="#Avoid_bold_and_underline"><span class="tocnumber">9</span> <span class="toctext">Avoid bold and underline</span></a></li>
+                                <li class="toclevel-1 tocsection-10"><a href="#The_proper_way_to_use_figures"><span class="tocnumber">10</span> <span class="toctext">The proper way to use figures</span></a></li>
+                                <li class="toclevel-1 tocsection-11"><a href="#Text_stops_justifying"><span class="tocnumber">11</span> <span class="toctext">Text stops justifying</span></a></li>
+                                <li class="toclevel-1 tocsection-12"><a href="#Rules_of_punctuation_and_spacing"><span class="tocnumber">12</span> <span class="toctext">Rules of punctuation and spacing</span></a></li>
+                                <li class="toclevel-1 tocsection-13"><a href="#Compilation_fails_after_a_Babel_language_change"><span class="tocnumber">13</span> <span class="toctext">Compilation fails after a Babel language change</span></a></li>
+                                <li class="toclevel-1 tocsection-14"><a href="#Learning_LaTeX_quickly_or_correctly"><span class="tocnumber">14</span> <span class="toctext">Learning LaTeX quickly or correctly</span></a></li>
+                                <li class="toclevel-1 tocsection-15"><a href="#Non-breaking_spaces"><span class="tocnumber">15</span> <span class="toctext">Non-breaking spaces</span></a></li>
+                                <li class="toclevel-1 tocsection-16"><a href="#Smart_mathematics"><span class="tocnumber">16</span> <span class="toctext">Smart mathematics</span></a></li>
+                                <li class="toclevel-1 tocsection-17"><a href="#Use_vector_graphics_rather_than_raster_images"><span class="tocnumber">17</span> <span class="toctext">Use vector graphics rather than raster images</span></a></li>
+                                <li class="toclevel-1 tocsection-18"><a href="#Stretching_tables"><span class="tocnumber">18</span> <span class="toctext">Stretching tables</span></a></li>
+                                <li class="toclevel-1 tocsection-19"><a href="#Tables_are_easier_than_you_think"><span class="tocnumber">19</span> <span class="toctext">Tables are easier than you think</span></a></li>
+                                <li class="toclevel-1 tocsection-20"><a href="#Relieving_cumbersome_code_(lists_and_long_command_names)"><span class="tocnumber">20</span> <span class="toctext">Relieving cumbersome code (lists and long command names)</span></a></li>
+                                <li class="toclevel-1 tocsection-21"><a href="#Reducing_the_size_of_your_LaTeX_installation"><span class="tocnumber">21</span> <span class="toctext">Reducing the size of your LaTeX installation</span></a></li>
+                            </ul>
+                        </div>
+
+                        <h2><span class="mw-headline" id="Margins_are_too_wide">Margins are too wide</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=1" title="Edit section: Margins are too wide">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>LaTeX's default margins may seem too large. In most cases, this is a preferred default and improves readability.
+                        </p><p>If you still disagree, you can easily change them with
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="c">% or</span>
+<span class="k">\usepackage</span><span class="na">[margin=1.5in]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>See <a href="/wiki/LaTeX/Page_Layout" title="LaTeX/Page Layout">Page Layout</a>.
+                        </p>
+                        <h2><span class="mw-headline" id="Avoid_excessive_double_line_breaks_in_source_code">Avoid excessive double line breaks in source code</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=2" title="Edit section: Avoid excessive double line breaks in source code">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Too many paragraphs of one line or two do not look very good.
+                        </p><p>Remember the TeX rule:
+                        </p>
+                        <ul><li>If two or more consecutive line breaks are found, TeX starts a new paragraph.</li>
+                            <li>If only one linebreak is found, TeX inserts a space if there is no space directly before or after it.</li></ul>
+                        <p>You might be tempted to put blank lines all the time to improve the readability of your source code, but this will have an impact on formatting. The solution is simple: put a comment at the very beginning of the blank lines. This will prevent TeX from seeing another line break—all characters up to and including the next line break after a comment are ignored.
+                        </p><p>Example:
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span>We are in the first paragraph here.
+<span class="c">%</span>
+We are still in the first paragraph.
+
+This time, this is another paragraph.
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <h2><span class="mw-headline" id="Simplified_special_character_input">Simplified special character input</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=3" title="Edit section: Simplified special character input">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>So long as your computing environment supports UTF-8, you can enter special characters directly rather than entering the TeX commands for diacritics and other extended characters.  E.g., 
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span>R<span class="k">\&#39;</span>esum<span class="k">\&#39;</span>e can also be written résumé.
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>This requires that:
+                        </p>
+                        <ul><li>your text editor supports and is set to save your file in UTF-8;</li>
+                            <li>you add the <code class="mw-highlight" dir="ltr"><span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span></code> line in the preamble.</li></ul>
+                        <p>Avoid using <span style="font-family: monospace; color: #C08020; font-weight: normal;">latin1</span>. See <a href="/wiki/LaTeX/Special_Characters" title="LaTeX/Special Characters">Special Characters</a>.
+                        </p>
+                        <h2><span class="mw-headline" id="Writing_the_euro_symbol_directly">Writing the euro symbol directly</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=4" title="Edit section: Writing the euro symbol directly">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Add the following lines in your preamble:
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>marvosym<span class="nb">}</span>
+<span class="k">\DeclareUnicodeCharacter</span><span class="nb">{</span>20AC<span class="nb">}{</span><span class="k">\EUR</span><span class="nb">{}}</span>
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <h2><span class="mw-headline" id="LaTeX_paragraph_headings_have_title_and_content_on_the_same_line">LaTeX paragraph headings have title and content on the same line</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=5" title="Edit section: LaTeX paragraph headings have title and content on the same line">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Some people do not like the way <code class="mw-highlight" dir="ltr"><span class="k">\paragraph</span><span class="nb">{</span>...<span class="nb">}</span></code> writes the title on the same line as the content. This is actually fairly common in a lot of documents and not as weird as it may seem at first.
+                        </p><p>There are ways to get around the default behavior, however; see <a href="/wiki/LaTeX/Paragraph_Formatting#.5Cparagraph_line_break" title="LaTeX/Paragraph Formatting">\paragraph line break</a> for more information.
+                        </p>
+                        <h2><span id="Fonts_are_ugly.2Fjagged.2Fbitmaps_or_PDF_search_fails_or_Copy.2Fpaste_from_PDF_is_messy"></span><span class="mw-headline" id="Fonts_are_ugly/jagged/bitmaps_or_PDF_search_fails_or_Copy/paste_from_PDF_is_messy"><i>Fonts are ugly/jagged/bitmaps</i> or <i>PDF search fails</i> or <i>Copy/paste from PDF is messy</i></span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=6" title="Edit section: Fonts are ugly/jagged/bitmaps or PDF search fails or Copy/paste from PDF is messy">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>You must be using diacritics (<i>e.g.</i> accents) with OT1 encoding (the default).
+                            Switch to T1 encoding:
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>If you have ugly jagged fonts after the font encoding change, then you have no Type1 compatible fonts available. Install <span style="font-family: monospace; color: #2020C0; font-weight: normal;">Computer Modern Super</span> or <span style="font-family: monospace; color: #2020C0; font-weight: normal;">Latin Modern</span> (package name may be <span style="font-family: monospace; color: #2020C0; font-weight: normal;">lm</span>). To use <span style="font-family: monospace; color: #2020C0; font-weight: normal;">Latin Modern</span> you need to include the package:
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>See <a href="/wiki/LaTeX/Fonts#Font_encoding" title="LaTeX/Fonts">Fonts</a> for an explanation.
+                        </p>
+                        <h2><span class="mw-headline" id="Manual_formatting:_use_of_line_breaks_and_page_breaks">Manual formatting: use of line breaks and page breaks</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=7" title="Edit section: Manual formatting: use of line breaks and page breaks">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>You should <i>really</i> avoid breaking lines and pages manually. The TeX engine is in charge of that. The big problem with manual formatting is that it is not dynamic. Even if it looks right the first time, the content is likely to render really badly if you change anything before the point you manually formatted.
+                        </p><p>The only place where page breaks are recommended is at the upper level of sectioning in your documents, <i>e.g.</i> parts or chapters (although when you start a new part or chapter, LaTeX will ordinarily do this for you). When you do manually insert a page break, you should use <code class="mw-highlight" dir="ltr"><span class="k">\clearpage</span></code> or <code class="mw-highlight" dir="ltr"><span class="k">\cleardoublepage</span></code> which print currently floating figures before starting a new page.
+                        </p><p>If you absolutely have to insert line or page breaks manually, you should do it after you are sure you have completed your document otherwise, so that you don't later have to come back and update it.
+                        </p>
+                        <h2><span id="Always_finish_commands_with_.7B.7D"></span><span class="mw-headline" id="Always_finish_commands_with_{}">Always finish commands with <i>{}</i></span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=8" title="Edit section: Always finish commands with {}">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>TeX has an unintuitive rule that if a control sequence (a command) is not followed by a pair of braces (with a parameter in between or not), then the following space character(s) are ignored. LaTeX will not print <i>any</i> space, and the command (say, the TeX or LaTeX logos) are run together with the following word.
+                        </p><p>To fix this, use a pair of braces after the command, even if there are no parameters.
+                            Example:
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="k">\LaTeX</span> is great. <span class="c">% BAD !</span>
+<span class="k">\LaTeX</span><span class="nb">{}</span> is great. <span class="c">% GOOD !</span>
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>(Technical explanation: a control sequence name can only be composed of characters with catcode 11, that is A-Z and a-z by default. TeX knows where the control sequence name start thanks to the backslash, and it knows where it ends when it encounters the first token which is not of catcode 11. This character is then skipped. Since consecutive spaces have been concatenated into one single space, no space is taken into account.)
+                        </p><p>It is possible to define macros that will insert a space dynamically by using the <span style="font-family: monospace; color: #2020C0; font-weight: normal;">xspace</span> package.
+                        </p>
+                        <ul><li>If there is no brace and a space following the command, an extra space will be appended.</li>
+                            <li>If there are braces, no extra space will be printed.</li></ul>
+                        <p>Example:
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>xspace<span class="nb">}</span>
+<span class="k">\let\latexold\LaTeX</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\LaTeX</span><span class="nb">}{</span><span class="k">\textrm</span><span class="nb">{</span><span class="k">\latexold</span><span class="nb">}</span><span class="k">\xspace</span><span class="nb">}</span>
+...
+<span class="k">\LaTeX</span> is followed by a space.
+<span class="k">\LaTeX</span><span class="nb">{}</span> is followed by a space.
+<span class="k">\LaTeX</span><span class="nb">{}</span>is not followed by a space.
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <h2><span class="mw-headline" id="Avoid_bold_and_underline">Avoid bold and underline</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=9" title="Edit section: Avoid bold and underline">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Typographically speaking, it is usually poor practice to use bold or underline formats in the middle of a paragraph. This has become a common habit for users of traditional word processors because these two functions are very easily accessible (along with italics).
+                        </p><p>However, bold and underline tend to overweight the text and distract the reader. When you start reading a paragraph with a bold word in the middle, you often read the emphasized part first, thus spoiling the content and breaking the order of the ideas. Italics are less obvious and do not have more weight than normal characters, so they are usually a better choice for emphasizing small amounts of text.
+                        </p><p>The original and more appropriate use of bold and underline is for special parts, such as headers, the index, glossaries, and so on. (Actually, underlining is rarely used in professional environments.)
+                        </p><p>LaTeX has a macro <code class="mw-highlight" dir="ltr"><span class="k">\emph</span><span class="nb">{</span>...<span class="nb">}</span></code> for emphasizing text using italics. It should be preferred to <code class="mw-highlight" dir="ltr"><span class="k">\textit</span><span class="nb">{</span>...<span class="nb">}</span></code> because <code class="mw-highlight" dir="ltr"><span class="k">\emph</span><span class="nb">{</span>...<span class="nb">}</span></code> will correctly print emphasized text inside other italic text in the regular font.
+                        </p>
+                        <h2><span class="mw-headline" id="The_proper_way_to_use_figures">The proper way to use figures</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=10" title="Edit section: The proper way to use figures">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Users used to WYSIWYG document processors like Microsoft Word or LibreOffice often get frustrated with figures. The answer is simple: a figure is <i>not</i> a picture! 
+                        </p><p>If you use <code class="mw-highlight" dir="ltr"><span class="k">\includegraphics</span></code> without enclosing it in a <span style="font-family: monospace; color: #0000D0; font-weight: normal;">figure</span> environment, it will behave just as in a word processor, placing the picture right at the spot where it was placed in the source.
+                        </p><p><i>Figures</i> are a type of float, which is a virtual object that LaTeX can put in places other than the exact location it was created, which helps to prevent cluttering your text with pictures and tables.
+                        </p><p>See <a href="/wiki/LaTeX/Importing_Graphics" title="LaTeX/Importing Graphics">Importing Graphics</a> and <a href="/wiki/LaTeX/Floats,_Figures_and_Captions" title="LaTeX/Floats, Figures and Captions">Floats, Figures and Captions</a> for more details.
+                        </p>
+                        <h2><span class="mw-headline" id="Text_stops_justifying">Text stops justifying</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=11" title="Edit section: Text stops justifying">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Most likely you have used
+                            <code class="mw-highlight" dir="ltr"><span class="k">\raggedleft</span></code>,
+                            <code class="mw-highlight" dir="ltr"><span class="k">\raggedright</span></code> or
+                            <code class="mw-highlight" dir="ltr"><span class="k">\centering</span></code>
+                            at some point and forgotten to switch it off. These commands are switches—they remain active until the end of the scope, or until the end of the document if there is no scope. See <a href="/wiki/LaTeX/Paragraph_Formatting#Paragraph_Alignment" title="LaTeX/Paragraph Formatting">Paragraph Alignment</a> for more information.
+                        </p>
+                        <h2><span class="mw-headline" id="Rules_of_punctuation_and_spacing">Rules of punctuation and spacing</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=12" title="Edit section: Rules of punctuation and spacing">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>LaTeX does some work for you, but not everything. Especially regarding punctuation, you are pretty free to do what you want. Punctuation rules are different for each language. In English there is <i>no</i> space before a punctuation mark and one space after it.
+                        </p><p>There are a lot of rules, but you can have a quick look at <a href="https://en.wikipedia.org/wiki/Punctuation#Conventional_styles_of_English_punctuation" class="extiw" title="w:Punctuation">Wikipedia</a>.
+                        </p>
+                        <h2><span class="mw-headline" id="Compilation_fails_after_a_Babel_language_change">Compilation fails after a Babel language change</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=13" title="Edit section: Compilation fails after a Babel language change">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>This is a limitation of Babel. Delete the <tt>.aux</tt> file (or clean the project), then try compiling again.
+                        </p>
+                        <h2><span class="mw-headline" id="Learning_LaTeX_quickly_or_correctly">Learning LaTeX quickly or correctly</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=14" title="Edit section: Learning LaTeX quickly or correctly">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Nowadays it is very common to “learn” on the web by using a search engine and copying and pasting things here and there. As with every programming language, this is generally a poor method which will lead to lack of control, unexpected results, and a lot of frustration. Really learning LaTeX is not that difficult and does not take that long. Most chapters in this book are dedicated to a specific usage, so the basics are actually covered very quickly.
+                        </p><p>If you are getting frustrated with a specific package, make sure you read its official documentation, which is usually the best source of information. Content found on the web, even in this book, is rarely as accurate as the official documentation. Inaccurate information might result in causing mistakes without you understanding why.
+                        </p><p>The time you spend learning is worth it, and it quickly makes up for the time you would lose if you don't learn things properly and end up stuck all the time.
+                        </p>
+                        <h2><span class="mw-headline" id="Non-breaking_spaces">Non-breaking spaces</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=15" title="Edit section: Non-breaking spaces">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>This useful feature is unknown to most newcomers, although it is available on most WYSIWYG document processors. A non-breaking space between two tokens (e.g. words, punctuation marks) prevents processors from inserting a line break between them. It is very important for consistent reading. LaTeX uses the '~' symbol as a non-breaking space.
+                        </p><p>You usually use non-breaking spaces for punctuation marks in some languages, for units and currencies, for initials, etc.
+                        </p><p>For example, in French typography, you put a non-breaking space before all two-parts punctuation marks.
+                            Example:
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span>Il répondit~: «~Ce pain coûte-t-il 2~€~?~»
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>Note that writing French like this might get really painful. Thankfully, Babel with the <span style="font-family: monospace; color: #C08020; font-weight: normal;">frenchb</span> option will take care of the non-breaking spaces for all punctuation marks. In the above example, only the non-breaking space for the euro symbol must remain.
+                        </p>
+                        <h2><span class="mw-headline" id="Smart_mathematics">Smart mathematics</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=16" title="Edit section: Smart mathematics">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>All virtual objects designated by letters, variables or others should use a dedicated formatting. For math and a lot of other fields, the LaTeX math formatting is perfect. For instance, if you want to refer to an object <i>A</i>, write
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span>Speaking of <span class="s">$</span><span class="nb">A</span><span class="s">$</span>, let&#39;s say...
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>If you want to refer to several objects in a sentence, it is the same.
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span>Speaking of <span class="s">$</span><span class="nb">A</span><span class="s">$</span>, <span class="s">$</span><span class="nb">B</span><span class="s">$</span> and <span class="s">$</span><span class="nb">C</span><span class="s">$</span>...
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>If you refer to a set of objects, you can still use the math notation.
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span>The family <span class="s">$</span><span class="o">(</span><span class="nb">A, B, C</span><span class="o">)</span><span class="s">$</span> is...
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>Note that this is different from usual text parentheses.
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span>A sentence. (<span class="s">$</span><span class="nb">A</span><span class="s">$</span>, <span class="s">$</span><span class="nb">B</span><span class="s">$</span>, and <span class="s">$</span><span class="nb">C</span><span class="s">$</span> are not concerned, but we do not mean the <span class="s">$</span><span class="o">(</span><span class="nb">A, B, C</span><span class="o">)</span><span class="s">$</span> family.)
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <h2><span class="mw-headline" id="Use_vector_graphics_rather_than_raster_images">Use vector graphics rather than raster images</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=17" title="Edit section: Use vector graphics rather than raster images">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Raster (bitmap) graphics scale poorly and often create jagged or low-quality results which clash with the document quality, particularly when printed.
+                        </p><p>Using vector (line-oriented) graphics instead, either through LaTeX's native diagramming tools or by exporting vector formats from your drawing or diagramming tools, will produce much higher quality results. When possible, you should prefer PDF, EPS, or <a href="/wiki/LaTeX/Importing_Graphics#Vector_graphics" title="LaTeX/Importing Graphics">SVG</a> graphics over PNG or JPG.
+                        </p>
+                        <h2><span class="mw-headline" id="Stretching_tables">Stretching tables</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=18" title="Edit section: Stretching tables">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Trying to stretch tables with the default <span style="font-family: monospace; color: #0000D0; font-weight: normal;">tabular</span> environment will often lead to unexpected results.
+                            The nice <span style="font-family: monospace; color: #2020C0; font-weight: normal;">tabu</span> package will do what you want and even much more. Alternatively if you cannot use the <span style="font-family: monospace; color: #2020C0; font-weight: normal;">tabu</span> package you may try <span style="font-family: monospace; color: #2020C0; font-weight: normal;">tabularx</span> or <span style="font-family: monospace; color: #2020C0; font-weight: normal;">tabulary</span> packages See <a href="/wiki/LaTeX/Tables" title="LaTeX/Tables">Tables</a>.
+                        </p>
+                        <h2><span class="mw-headline" id="Tables_are_easier_than_you_think">Tables are easier than you think</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=19" title="Edit section: Tables are easier than you think">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>Even though the <a href="/wiki/LaTeX/Tables" title="LaTeX/Tables">Tables</a> chapter is quite long, it is worth reading. In the end, you only need to know a few things about the environment of your choice.
+                        </p><p>Some LaTeX editors feature table assistants. Also, many spreadsheet applications have a LaTeX export feature (or plugin). Again, see  <a href="/wiki/LaTeX/Tables" title="LaTeX/Tables">Tables</a> for more details.
+                        </p>
+                        <h2><span id="Relieving_cumbersome_code_.28lists_and_long_command_names.29"></span><span class="mw-headline" id="Relieving_cumbersome_code_">Relieving cumbersome code (lists and long command names)</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=20" title="Edit section: Relieving cumbersome code (lists and long command names)">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>LaTeX is sometimes cumbersome to write, especially if you are not using an adequate editor. See <a href="/wiki/LaTeX/Installation#Editors" title="LaTeX/Installation">Editors</a> for some interesting choices.
+                        </p><p>You can define aliases to shorten some commands:
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>xspace<span class="nb">}</span>
+<span class="k">\newcommand\tss</span><span class="na">[1]</span><span class="nb">{</span><span class="k">\textsuperscript</span><span class="nb">{</span>#1<span class="nb">}}</span>
+<span class="k">\newcommand\tbs</span><span class="na">[1]</span><span class="nb">{</span><span class="k">\textbackslash\xspace</span><span class="nb">}</span>
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <p>Here the <span style="font-family: monospace; color: #2020C0; font-weight: normal;">xspace</span> package comes in handy to avoid swallowed spaces.
+                        </p><p>For lists you may want to try the <span style="font-family: monospace; color: #2020C0; font-weight: normal;">easylist</span> package. Now writing a list is as simple as
+                        </p>
+                        <table style="margin-top: 1.5em; margin-bottom: 1.5em">
+
+                            <tbody><tr>
+                                    <td style="padding-left:3em;">
+                                        <div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span></span><span class="k">\usepackage</span><span class="na">[ampersand]</span><span class="nb">{</span>easylist<span class="nb">}</span>
+<span class="c">% ...</span>
+
+<span class="k">\begin</span><span class="nb">{</span>easylist<span class="nb">}</span>
+<span class="nb">&amp;</span> Item 1
+<span class="nb">&amp;</span> Item 2
+<span class="nb">&amp;&amp;</span> Subitem 1
+<span class="nb">&amp;&amp;&amp;</span> Subsubitem 1
+<span class="nb">&amp;</span> Item 3
+<span class="nb">&amp;&amp;</span> Subitem 1
+<span class="k">\end</span><span class="nb">{</span>easylist<span class="nb">}</span>
+                                            </pre></div>
+                                    </td></tr></tbody></table>
+                        <h2><span class="mw-headline" id="Reducing_the_size_of_your_LaTeX_installation">Reducing the size of your LaTeX installation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit&amp;section=21" title="Edit section: Reducing the size of your LaTeX installation">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+                        <p>The <a href="/wiki/LaTeX/Installation" title="LaTeX/Installation">Installation</a> article explains in detail how to manually install a fully functional TeX environment,  including LaTeX and other features, in under 100 MB.
+                        </p><p><br />
+                        </p>
+                        <table width="100%" cellspacing="0" cellpadding="2" style="border: 1px solid black;" class="noprint">
+                            <tbody><tr>
+                                    <td width="33%" bgcolor="#ffffe0"><a href="/wiki/LaTeX/Export_To_Other_Formats" title="LaTeX/Export To Other Formats">Previous: Export To Other Formats</a>
+                                    </td>
+                                    <td width="33%" bgcolor="#ffffe0" align="center"><a href="/wiki/LaTeX" title="LaTeX">Index</a>
+                                    </td>
+                                    <td width="33%" bgcolor="#ffffe0" align="right"><a href="/wiki/LaTeX/Tips_and_Tricks" title="LaTeX/Tips and Tricks">Next: Tips and Tricks</a>
+                                    </td></tr></tbody></table>
+
+                        <!-- 
+                        NewPP limit report
+                        Parsed by mw1329
+                        Cached time: 20181125071155
+                        Cache expiry: 1900800
+                        Dynamic content: false
+                        CPU time usage: 0.304 seconds
+                        Real time usage: 1.594 seconds
+                        Preprocessor visited node count: 4010/1000000
+                        Preprocessor generated node count: 0/1500000
+                        Post‐expand include size: 19844/2097152 bytes
+                        Template argument size: 10386/2097152 bytes
+                        Highest expansion depth: 11/40
+                        Expensive parser function count: 0/500
+                        Unstrip recursion depth: 0/20
+                        Unstrip post‐expand size: 6942/5000000 bytes
+                        Number of Wikibase entities loaded: 0/400
+                        Lua time usage: 0.184/10.000 seconds
+                        Lua memory usage: 2.27 MB/50 MB
+                        -->
+                        <!--
+                        Transclusion expansion time report (%,ms,calls,template)
+                        100.00% 1541.791      1 -total
+                         53.02%  817.496     11 Template:LaTeX/LaTeX
+                         40.72%  627.894     15 Template:LaTeX/Usage
+                         14.52%  223.899     28 Template:BookCat
+                          7.06%  108.919     28 Template:Evalx
+                          5.05%   77.835      1 Template:LaTeX/Top
+                          1.61%   24.789      1 Template:LaTeX/Contents
+                          0.58%    8.924     28 Template:BOOKCATEGORY
+                          0.52%    8.045      1 Template:LaTeX/Bottom
+                          0.29%    4.443     28 Template:NAIVEBOOKNAME
+                        -->
+
+                        <!-- Saved in parser cache with key enwikibooks:pcache:idhash:283536-0!canonical and timestamp 20181125071153 and revision id 3445914
+                        -->
+                    </div><noscript><img src="//en.wikibooks.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>					<div class="printfooter">
+                    Retrieved from "<a dir="ltr" href="https://en.wikibooks.org/w/index.php?title=LaTeX/FAQ&amp;oldid=3445914">https://en.wikibooks.org/w/index.php?title=LaTeX/FAQ&amp;oldid=3445914</a>"					</div>
+                <div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/wiki/Category:Book:LaTeX" title="Category:Book:LaTeX">Book:LaTeX</a></li></ul></div></div>				<div class="visualClear"></div>
+            </div>
+        </div>
+        <div id="mw-navigation">
+            <h2>Navigation menu</h2>
+            <div id="mw-head">
+                <div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+                    <h3 id="p-personal-label">Personal tools</h3>
+                    <ul>
+                        <li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Discussion for this IP address</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=LaTeX%2FFAQ" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=LaTeX%2FFAQ" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>						</ul>
+                </div>
+                <div id="left-navigation">
+                    <div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+                        <h3 id="p-namespaces-label">Namespaces</h3>
+                        <ul>
+                            <li id="ca-nstab-main" class="selected"><span><a href="/wiki/LaTeX/FAQ" title="View the content page [c]" accesskey="c">Book</a></span></li><li id="ca-talk"><span><a href="/wiki/Talk:LaTeX/FAQ" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>						</ul>
+                    </div>
+                    <div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+                        <input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-variants-label" />
+                        <h3 id="p-variants-label">
+                            <span>Variants</span>
+                        </h3>
+                        <ul class="menu">
+                        </ul>
+                    </div>
+                </div>
+                <div id="right-navigation">
+                    <div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+                        <h3 id="p-views-label">Views</h3>
+                        <ul>
+                            <li id="ca-view" class="collapsible selected"><span><a href="/wiki/LaTeX/FAQ">Read</a></span></li><li id="ca-edit" class="collapsible"><span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></span></li><li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=LaTeX/FAQ&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>						</ul>
+                    </div>
+                    <div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+                        <input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
+                        <h3 id="p-cactions-label"><span>More</span></h3>
+                        <ul class="menu">
+                        </ul>
+                    </div>
+                    <div id="p-search" role="search">
+                        <h3>
+                            <label for="searchInput">Search</label>
+                        </h3>
+                        <form action="/w/index.php" id="searchform">
+                            <div id="simpleSearch">
+                                <input type="search" name="search" placeholder="Search Wikibooks" title="Search Wikibooks [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="mw-panel">
+                <div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+                <div class="portal" role="navigation" id="p-Navigation" aria-labelledby="p-Navigation-label">
+                    <h3 id="p-Navigation-label">Navigation</h3>
+                    <div class="body">
+                        <ul>
+                            <li id="n-mainpage"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main Page</a></li><li id="n-help"><a href="/wiki/Help:Contents" title="Find help on how to use and edit Wikibooks">Help</a></li><li id="n-Browse"><a href="/wiki/Wikibooks:Card_Catalog_Office" title="Check out what Wikibooks has to offer">Browse</a></li><li id="n-Cookbook"><a href="/wiki/Cookbook:Table_of_Contents" title="Learn recipes from around the world">Cookbook</a></li><li id="n-Wikijunior"><a href="/wiki/Wikijunior" title="Books for children">Wikijunior</a></li><li id="n-Featured-books"><a href="/wiki/Wikibooks:Featured_books" title="The best of Wikibooks">Featured books</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-sitesupport"><a href="//donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikibooks.org&amp;uselang=en" title="Support Wikibooks">Donations</a></li><li id="n-randomrootpage"><a href="/wiki/Special:RandomInCategory/Book:Wikibooks_Stacks/Books">Random book</a></li><li id="n-Using-Wikibooks"><a href="/wiki/Using_Wikibooks">Using Wikibooks</a></li>				</ul>
+                    </div>
+                </div>
+                <div class="portal" role="navigation" id="p-Community" aria-labelledby="p-Community-label">
+                    <h3 id="p-Community-label">Community</h3>
+                    <div class="body">
+                        <ul>
+                            <li id="n-Reading-room"><a href="/wiki/Wikibooks:Reading_room" title="Discuss Wikibooks-related questions and concerns with others">Reading room</a></li><li id="n-portal"><a href="/wiki/Wikibooks:Community_Portal" title="Find your way around the Wikibooks community">Community portal</a></li><li id="n-currentevents"><a href="/wiki/Wikibooks:Reading_room/Bulletin_Board" title="Important community news">Bulletin Board</a></li><li id="n-maintenance"><a href="/wiki/Wikibooks:Maintenance" title="Frequent tasks that you can help with">Help out!</a></li><li id="n-Policies-and-guidelines"><a href="/wiki/Wikibooks:Policies_and_guidelines" title="Pages detailing important rules and procedures">Policies and guidelines</a></li><li id="n-contact"><a href="/wiki/Wikibooks:Contact_us" title="Alternative methods of communication">Contact us</a></li>				</ul>
+                    </div>
+                </div>
+                <div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+                    <h3 id="p-tb-label">Tools</h3>
+                    <div class="body">
+                        <ul>
+                            <li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/LaTeX/FAQ" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/LaTeX/FAQ" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="//commons.wikimedia.org/wiki/Special:UploadWizard?uselang=en" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=LaTeX/FAQ&amp;oldid=3445914" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=LaTeX/FAQ&amp;action=info" title="More information about this page">Page information</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q21976372" title="Link to connected data repository item [g]" accesskey="g">Wikidata item</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=LaTeX%2FFAQ&amp;id=3445914" title="Information on how to cite this page">Cite this page</a></li>				</ul>
+                    </div>
+                </div>
+                <div class="portal" role="navigation" id="p-lang" aria-labelledby="p-lang-label">
+                    <h3 id="p-lang-label">In other languages</h3>
+                    <div class="body">
+                        <ul>
+                            <li class="interlanguage-link interwiki-sr"><a href="https://sr.wikibooks.org/wiki/LaTeX/%D0%9D%D0%B0%D1%98%D1%87%D0%B5%D1%88%D1%9B%D0%B5_%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D1%99%D0%B0%D0%BD%D0%B0_%D0%BF%D0%B8%D1%82%D0%B0%D1%9A%D0%B0" title="LaTeX/Најчешће постављана питања – Serbian" lang="sr" hreflang="sr" class="interlanguage-link-target">Српски / srpski</a></li>				</ul>
+                        <div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q21976372#sitelinks-wikibooks" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>			</div>
+                </div>
+                <div class="portal" role="navigation" id="p-Sister_projects" aria-labelledby="p-Sister_projects-label">
+                    <h3 id="p-Sister_projects-label">Sister projects</h3>
+                    <div class="body">
+                        <ul>
+                            <li id="n-Wikipedia"><a href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia</a></li><li id="n-Wikiversity"><a href="https://en.wikiversity.org/wiki/Wikiversity:Main_Page">Wikiversity</a></li><li id="n-Wiktionary"><a href="https://en.wiktionary.org/wiki/Wiktionary:Main_Page">Wiktionary</a></li><li id="n-Wikiquote"><a href="https://en.wikiquote.org/wiki/Main_Page">Wikiquote</a></li><li id="n-Wikisource"><a href="https://en.wikisource.org/wiki/Main_Page">Wikisource</a></li><li id="n-Wikinews"><a href="https://en.wikinews.org/wiki/Main_Page">Wikinews</a></li><li id="n-Wikivoyage"><a href="https://en.wikivoyage.org/wiki/Main_Page">Wikivoyage</a></li><li id="n-Commons"><a href="https://commons.wikimedia.org/wiki/Main_Page">Commons</a></li><li id="n-Wikidata"><a href="https://www.wikidata.org/wiki/Wikidata:Main_Page">Wikidata</a></li>				</ul>
+                    </div>
+                </div>
+                <div class="portal" role="navigation" id="p-coll-print_export" aria-labelledby="p-coll-print_export-label">
+                    <h3 id="p-coll-print_export-label">Print/export</h3>
+                    <div class="body">
+                        <ul>
+                            <li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=LaTeX%2FFAQ">Create a collection</a></li><li id="coll-download-as-rdf2latex"><a href="/w/index.php?title=Special:ElectronPdf&amp;page=LaTeX%2FFAQ&amp;action=show-download-screen">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=LaTeX/FAQ&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" role="contentinfo">
+            <ul id="footer-info">
+                <li id="footer-info-lastmod"> This page was last edited on 24 July 2018, at 14:01.</li>
+                <li id="footer-info-copyright">Text is available under the <a href="//creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike License.</a>; additional terms may apply.  By using this site, you agree to the <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy.</a></li>
+            </ul>
+            <ul id="footer-places">
+                <li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+                <li id="footer-places-about"><a href="/wiki/Wikibooks:Welcome" title="Wikibooks:Welcome">About Wikibooks</a></li>
+                <li id="footer-places-disclaimer"><a href="/wiki/Wikibooks:General_disclaimer" title="Wikibooks:General disclaimer">Disclaimers</a></li>
+                <li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+                <li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+                <li id="footer-places-mobileview"><a href="//en.m.wikibooks.org/w/index.php?title=LaTeX/FAQ&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+            </ul>
+            <ul id="footer-icons" class="noprint">
+                <li id="footer-copyrightico">
+                    <a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>					</li>
+                <li id="footer-poweredbyico">
+                    <a href="//www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>					</li>
+            </ul>
+            <div style="clear: both;"></div>
+        </div>
+    </body>
+</html>

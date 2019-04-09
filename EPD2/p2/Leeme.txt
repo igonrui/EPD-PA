@@ -1,0 +1,147 @@
+body{
+    background-color: rgb(217,206,178); //cambiar el color del fondo 
+    margin:0; //margen a 0, para que el color de fondo se vea continuo por toda la pantalla, a los lados también
+    font-family: monospace; //cambiamos la fuente del texto
+    font-size:120%; //aumentamos ligeramente el tamaño del texto, ya que con esa fuente el texto aparece muy pequeño
+    text-align: justify; //alineación del texto justificada
+}
+
+#navContainer{ //asignamos un id al div que contiene el menú, ya que solo queremos estas características para el mismo
+    text-align: center; //alineación del texto
+    background-color: rgb(217,206,178); //cambiamos el color
+    width: 100%; //establecemos que este contenedor ocupe todo el ancho de su contenedor, es decir el body
+}
+
+.nav { //cada texto en específico del menú le dotamos de una serie de características, por eso lo hacemos clase, porque lo aplicamos a varios elementos a la vez
+    font-size:120%; //aumetamos su tamaño
+    text-decoration: underline overline dotted; //le ponemos una decoracion al texto de tipo subrayado por encima y por debajo con una línea discontinua de puntos
+    padding: 1%; //le aumentamos su padding (el espacio que va a dejar entre él y el elemento contiguo)
+}
+
+a:hover, a:link, a:visited, a:active { //pseudoclases para los links, para cuando se pulsa sobre ellos, cuando se han visitado y cuando están clicándose
+    text-decoration: none; //que no aparezcan subrayados
+    font-size: 120%; //aumentados ligeramente de tamaño
+    color: black; //de color negro siempre
+}
+
+#cabecera{ #titulo del sitio
+    text-decoration: underline overline dotted; //le ponemos una decoración diferente con puntos por encima
+}
+
+
+section{
+    background-color: rgb(148,155,147); //a cada seccion del documento le ponemos un color
+    padding: 2%; //y le aumentamos su padding (el espacio que va a dejar entre él y el elemento contiguo)
+}
+
+
+.header{
+    background-color: rgb(148,140,117); //cambiamos el color de la zona de la cabecera
+    padding:2%; //aumentamos su padding (epsacio entre él y el elemento contiguo)
+    font-size: 120%; //aumentamos el tamaño de la letra
+    text-align: center; //ponemos todos los elementos alineados
+}
+
+#publi{
+    background-color: rgb(148,140,117); //cambiamos el color
+    position: relative; //le ponemos una posición relative, será importante este estilo para que el div que contiene (su hijo), al ponerlo en absolute se coloque por encima de éste (su padre)
+    width:100%; //le decimos que ocupe todo el año de su contenedor
+}
+
+#construc{
+    position: absolute; //tal y como explicabamos con el id #publi, le colocamos esta posicion para que se coloque este elemento div por encima de su padre 
+    right:30%; //colocamos este contenedor justo a 30% de la izquierda de donde termina su contenedor padre
+    top: 40%; //lo mismo con el top o la parte superior
+    background-color: rgb(148,140,117); //le cambiamos el color
+    border-left:4px solid black;  //le ponemos el borde izquierdo negro, para que aparezca como una línea de separación
+}
+
+
+#legal, #platforms{
+    text-align: center; //coloca el texto en el centro
+    padding:2%; //le añade un padding para que estén los elementos mas separados
+}
+
+#form{ //como estas características las queremos solo en el formulario, hacemos un id
+    background-color: rgb(148,140,117); //cambiamos el color
+    padding:2%; //aumentamos el espacio del padding
+    font-size: 120%; //aumentamos el tamaño de la fuente
+    text-align: center; //colocamos el texto en el centro
+}
+
+#music{ //en el elemento de id music, colocamos estas características
+        padding: 2%; //aumentamos el espacio del padding
+        text-align: center; //colocamos los elementos al centro
+}
+
+#miembros{
+    position: relative; //le establecemos una posición relative con respecto a su hijo, con objeto de que su hijo (absolute) quede superpuesto
+    width:100%; //le decimos que ocupe todo el ancho de su contenedor
+}
+
+#mascota{
+    position: absolute; //le establecemos una posición absoluta, con objeto de que quede superpuesto a su padre (que está relative)
+    right:30%; //lo colocamos a 30% de justo donde termina su contenedor padre
+    top: 20%; //e igual con la zona superior
+}
+
+.aside{
+    background-color: rgb(148,140,117); //cambiamos el color
+    width:90%; //le decimos que ocupe un 90% del contenedor
+}
+
+img-40{
+    width:40%; //la imagen de publicidad y el el progreso lo ponemos mas pequeño
+}
+
+h1, h2{
+    font-family: monospace; //ponemos los titlos con la fuente monospace
+
+}
+
+h2:after{ //pseudoclase para que justo a continuacion del contenido se muestre algo
+    content:' ';
+    display:block;
+    border:2px solid black; //en este caso lo que se va a mostrar es una línea debajo del texto
+}
+
+#top{
+    text-align: center; //alineamos en el centro el contenido 
+}
+
+table, th, td { //para que muestre las tablas con un estilo determinado
+    border-collapse: collapse;
+    border: 1px solid black;
+
+}
+th, td {
+    padding: 1%; //le aumentamos el padding a las celdas
+}
+
+tr:nth-child(even){ //Esto es para el estilo de las filas, para que las pares se muestren de un color
+    background-color: rgb(196,191,179);
+}
+
+tr:nth-child(odd){ //y las impares de otro
+    background-color: rgb(148,140,117);
+}
+
+.round{
+    border-radius: 50%; //ponemos esta imagen con un borde redondeado (que quede totalmente redonda)
+}
+
+.border-round{
+    border-radius: 3%; //ponemos esta imagen con un borde ligeramente redondeado
+    width:20%;
+}
+
+.miniatura { //para poner las imagenes de las miniaturas de libros de una manera concreta
+    border: 1px solid #ddd; //un borde con color negro
+    border-radius: 4px;
+    padding: 5px; //un padding con respecto al borde, para que quede tipo "marco de fotos"
+    width: 100px;
+}
+
+.miniatura:hover { //para que al pulsar sobre la miniatura aparezca una ligera sombra azulada
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
